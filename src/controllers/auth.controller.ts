@@ -11,10 +11,6 @@ export class AuthController {
 	}
 
 	async register(req: Request, res: Response): Promise<void> {
-		console.log('Registering user...')
-		console.log('Request body:', req.body)
-		console.log('Request headers:', req.headers)
-
 		const { username, password } = req.body
 
 		if (!username || !password) {
@@ -35,14 +31,24 @@ export class AuthController {
 			return
 		}
 
-		const token = await this.#_authService.login(username, password)
+		try {
+			const token = await this.#_authService.login(username, password)
 
-		if (!token) {
-			res.status(401).json({ message: 'Invalid credentials' })
-			return
+			if (!token) {
+				res.status(401).json({ message: 'Invalid credentials' })
+				return
+			}
+
+			res.json({ token })
+		} catch (error: any) {
+			if (error.message === 'User not found') {
+				res.status(404).json({ message: 'User not found' })
+			} else if (error.message === 'Invalid password') {
+				res.status(401).json({ message: 'Invalid password' })
+			} else {
+				res.status(500).json({ message: 'Internal server error' })
+			}
 		}
-
-		res.json({ token })
 	}
 
 	async verifyToken(req: Request, res: Response, next: Function): Promise<void> {
