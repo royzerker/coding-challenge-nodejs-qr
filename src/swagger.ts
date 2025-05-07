@@ -1,6 +1,7 @@
 import swaggerJsdoc from 'swagger-jsdoc'
 
 const PORT = process.env.PORT || 8000
+const HOST = process.env.HOST || 'localhost'
 
 const options: any = {
 	definition: {
@@ -12,7 +13,7 @@ const options: any = {
 		},
 		servers: [
 			{
-				url: `http://localhost:${PORT}/api`
+				url: `http://${HOST}:${PORT}/api`
 			}
 		],
 		components: {
