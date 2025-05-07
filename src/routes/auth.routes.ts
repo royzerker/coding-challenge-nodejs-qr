@@ -7,7 +7,7 @@ const authController = Container.get(AuthController)
 
 /**
  * @swagger
- * /register:
+ * /auth/register:
  *   post:
  *     summary: Register a new user
  *     tags: [Auth]
@@ -37,7 +37,7 @@ authRouter.post('/register', (req, res) => authController.register(req, res))
 
 /**
  * @swagger
- * /login:
+ * /auth/login:
  *   post:
  *     summary: Login a user
  *     tags: [Auth]
