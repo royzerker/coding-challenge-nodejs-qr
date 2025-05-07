@@ -12,6 +12,7 @@ const authController = Container.get(AuthController)
  * /factorize:
  *   post:
  *     summary: Factoriza una matriz
+ *     tags: ["QR"]
  *     requestBody:
  *       required: true
  *       content:
@@ -41,6 +42,7 @@ qrRouter.post('/factorize', authController.verifyToken.bind(authController), (re
  *   post:
  *     summary: Rota una matriz
  *     security: []
+ *     tags: ["QR"]
  *     requestBody:
  *       required: true
  *       content:
