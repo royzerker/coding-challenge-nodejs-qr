@@ -39,7 +39,7 @@ Realiza la factorización QR de la matriz enviada.
 
 ### Variables de entorno
 
-PORT=8000
-STATS_API_URL=http://localhost:8000/stats
-JWT_SECRET=your_jwt_secret
-JWT_EXPIRES_IN=1h
+- PORT=8000
+- STATS_API_URL=http://localhost:8000/stats
+- JWT_SECRET=your_jwt_secret
+- JWT_EXPIRES_IN=1h
